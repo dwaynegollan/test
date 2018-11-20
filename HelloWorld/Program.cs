@@ -14,6 +14,8 @@ namespace HelloWorld
 
             var t = doSomething(totalLength);
 
+            Console.WriteLine("End test delegate");
+
             //Console.Write("Enter your name:");
             //var Name = Console.ReadLine();
             //Console.WriteLine("Hello {0} World!",Name);

@@ -2,10 +2,38 @@
 
 namespace HelloWorld
 {
+    public class Plants
+    {
+        public enum PlantType
+        {
+            Watermelon = 0,
+            Orange = 1,
+            Apple = 2,
+            Pumpkin = 3   
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Start plant factory.");
+            // This shows here that we can create a plant factory,
+            // without knowing until runtime what type of plat we are going to create.
+            var watermelonPlantFactory = PlantFactory.Create(Plants.PlantType.Watermelon);
+            watermelonPlantFactory?.grow();
+
+            var applePlantFactory = PlantFactory.Create(Plants.PlantType.Apple);
+            applePlantFactory?.grow();
+
+            var OrangePlantFactory = PlantFactory.Create(Plants.PlantType.Orange);
+            OrangePlantFactory?.grow();
+
+            var pumpkinPlantFactory = PlantFactory.Create(Plants.PlantType.Pumpkin);
+            pumpkinPlantFactory?.grow();
+
+            Console.WriteLine("End plant factory.");
+
             // this takes in 2 strings and returns an int from the lambda expressions
             // s1, s2 (are the inputs) => s1.Length + s2.Length is the expression that is evaluated and returned
             Func<string,string,int> totalLength = (s1, s2) => s1.Length + s2.Length;
@@ -31,6 +59,8 @@ namespace HelloWorld
             //Vehicle vehicle = new Vehicle(4, 4, EngineType.Combustion);
             //Console.WriteLine("vehicle has an engine type: {0}", vehicle.GetEngineType());
         }
+
+        
 
         public static bool doSomething(Func<string,string,int> doIt)
         {
